@@ -1,0 +1,2495 @@
+:root {
+    /* Colors */
+    --color-white: #FFFFFF;
+    --color-black: #000000;
+
+    /* Typography - Mobile First */
+    --font-family: 'Inter', sans-serif;
+    --font-size-intro-mobile: 24px;
+    --font-size-intro-desktop: 32px;
+    --font-size-title-mobile: 20px;
+    --font-size-title-desktop: 24px;
+    /* Header по макету: имя 23px Semibold, подзаголовок 17px, расстояние между ними 8px */
+    --font-size-header-title: 23px;
+    --font-size-header-subtitle: 17px;
+    --font-size-header-link: 17px;
+    --gap-header-name: 8px;
+    --font-size-menu-mobile: 16px;
+    --font-size-menu-desktop: 17px;
+    --font-size-footer-desktop: 18px;
+    --font-size-text-mobile: 15px;
+    --font-size-text-desktop: 17px;
+    
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    
+    --line-height-intro: 1.21em;
+    --line-height-title: 1.3em;
+    --line-height-menu: 1.21em;
+    --line-height-text: 1.4em;
+
+    /* Spacing - Mobile First */
+    --spacing-xs: 4px;
+    --spacing-sm: 12px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-xxl: 40px;
+    /* Отступы слева и справа на всех страницах одинаковые — 56px */
+    --spacing-container-mobile: 56px;
+    --spacing-container-sm: 56px;
+    --spacing-container-tablet: 56px;
+    --spacing-container-desktop: 56px;
+    --spacing-container-detail: 56px;
+
+    /* Layout */
+    --container-max-width: 1440px;
+    --card-width-mobile: 100%;
+    --card-width-tablet: calc(50% - 16px);
+    --card-width-desktop: 624px;
+    --card-image-height-mobile: 240px;
+    --card-image-height-desktop: 416px;
+    --border-radius: 16px;
+
+    /* Gaps */
+    --gap-xs: 4px;
+    --gap-sm: 12px;
+    --gap-md: 16px;
+    --gap-lg: 24px;
+    --gap-xl: 32px;
+    --gap-xxl: 40px;
+    --gap-card-column: 28px;
+
+    /* Вертикальные отступы по макету (страница проекта), компактный ритм */
+    --space-header-to-nav-mobile: 40px;
+    --space-header-to-nav-tablet: 56px;
+    --space-header-to-nav-desktop: 72px;
+    --space-nav-to-info: 40px;
+    --space-description-to-meta: 40px;
+    --space-meta-to-hero-mobile: 56px;
+    --space-meta-to-hero-tablet: 56px;
+    --space-meta-to-hero-desktop: 56px;
+    --space-section-vertical: 32px;
+    --space-before-after-groups: 80px;
+    --space-before-after-item: 40px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--color-black);
+    background-color: var(--color-white);
+    line-height: var(--line-height-text);
+    overflow-x: hidden;
+    min-width: 0;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+    background-color: var(--color-white);
+    min-height: 100vh;
+    min-width: 0;
+    overflow-x: hidden;
+}
+
+/* Header - Mobile First (шрифт по макету: Inter) */
+.header {
+    flex-shrink: 0;
+    font-family: var(--font-family);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg) var(--spacing-container-mobile);
+    width: 100%;
+    min-width: 0;
+    align-items: flex-start;
+}
+
+.header__name {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-header-name);
+    width: 100%;
+    min-width: 0;
+}
+
+.header__title {
+    font-family: var(--font-family);
+    font-size: var(--font-size-header-title);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.21em;
+    color: var(--color-black);
+    margin: 0;
+    text-align: left;
+}
+
+.header__title-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.header__title-link:hover {
+    opacity: 0.7;
+}
+
+.header__subtitle {
+    font-family: var(--font-family);
+    font-size: var(--font-size-header-subtitle);
+    font-weight: var(--font-weight-regular);
+    line-height: 1.21em;
+    color: var(--color-black);
+    margin: 0;
+    text-align: left;
+}
+
+.header__menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+    align-self: flex-start;
+}
+
+.header__link {
+    font-family: var(--font-family);
+    font-size: var(--font-size-header-link);
+    font-weight: var(--font-weight-regular);
+    line-height: 1.21em;
+    color: var(--color-black);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+    text-align: left;
+}
+
+.header__link:hover {
+    opacity: 0.7;
+}
+
+.header__link--active {
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Main - Mobile First. flex: 1 прибивает футер к низу при коротком контенте */
+.main {
+    flex: 1;
+    padding: 0 var(--spacing-container-mobile);
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+    margin: 0 auto;
+}
+
+/* Страница проекта: отступы задают блоки внутри, main не дублирует */
+.main:has(.project-detail) {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.main:has(.site-frame),
+.main:has(.frame-5382),
+.main:has(.about),
+.main:has(.contact) {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.main:has(.about),
+.main:has(.contact) {
+    overflow: visible;
+}
+
+/* Intro - Mobile First */
+.intro {
+    margin-top: var(--spacing-xxl);
+    margin-bottom: var(--spacing-xxl);
+    padding: 0;
+}
+
+.intro__text {
+    font-size: var(--font-size-intro-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-intro);
+    color: var(--color-black);
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    text-align: left;
+}
+
+/* Projects - Mobile First */
+.projects {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-xxl);
+    margin-bottom: var(--spacing-xxl);
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.projects__section-title {
+    font-size: var(--font-size-intro-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-intro);
+    color: var(--color-black);
+    width: 100%;
+    margin: 0;
+    margin-top: var(--gap-xxl);
+    margin-bottom: var(--gap-xxl);
+    text-align: left;
+}
+
+.projects__item {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+}
+
+/* Card - Mobile First. По макету: картинка→заголовок 40px, заголовок→описание и описание→ссылка 24px */
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+@media (min-width: 768px) {
+    .projects__item:nth-child(1) .card {
+        gap: 40px;
+    }
+}
+
+.card__image-link {
+    display: block;
+    text-decoration: none;
+}
+
+.card__image-wrapper {
+    width: 100%;
+    max-width: 100%;
+    height: var(--card-image-height-mobile);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    min-width: 0;
+}
+
+.card__image {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.25s ease;
+}
+
+.card__image-link:hover .card__image {
+    transform: scale(1.05);
+}
+
+.card__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.card__title {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--gap-md);
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+}
+
+@media (min-width: 768px) {
+    .card__title {
+        gap: var(--gap-lg);
+    }
+}
+
+@media (min-width: 1024px) {
+    .projects__item:nth-child(1) .card__title {
+        gap: var(--gap-md);
+    }
+}
+
+.card__title-text {
+    font-size: var(--font-size-title-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-title);
+    color: var(--color-black);
+    text-align: left;
+}
+
+.card__description {
+    font-size: var(--font-size-text-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-text);
+    color: var(--color-black);
+    width: 100%;
+    text-align: left;
+}
+
+.card__link {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--gap-sm);
+    padding: var(--spacing-md) 0;
+    text-decoration: none;
+    width: fit-content;
+}
+
+
+.card__link-text {
+    font-size: var(--font-size-text-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-text);
+    color: var(--color-black);
+    text-align: left;
+}
+
+.card__link-icon {
+    width: 18.92px;
+    height: 10.42px;
+    flex-shrink: 0;
+}
+
+.card__link:hover {
+    opacity: 0.7;
+}
+
+/* Footer - Mobile First */
+.footer {
+    flex-shrink: 0;
+    padding: var(--spacing-xxl) var(--spacing-container-mobile);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+}
+
+.footer__menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.footer__link {
+    font-size: var(--font-size-menu-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-menu);
+    color: var(--color-black);
+    text-decoration: none;
+    text-align: right;
+}
+
+.footer__link:hover {
+    text-decoration: underline;
+}
+
+.footer__link--active {
+    font-weight: var(--font-weight-bold);
+}
+
+/* Site frame (Figma node 2546-5461) — BEM, только CSS-переменные */
+.site-frame {
+    padding: 0 var(--spacing-container-mobile);
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+.site-frame__intro {
+    margin-top: var(--spacing-xxl);
+    margin-bottom: var(--spacing-xl);
+}
+
+.site-frame__text {
+    font-size: var(--font-size-intro-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-intro);
+    color: var(--color-black);
+    margin: 0;
+}
+
+.site-frame__hero {
+    width: 100%;
+    margin-bottom: var(--spacing-xxl);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.site-frame__hero-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+
+.site-frame__section {
+    margin-bottom: var(--spacing-xxl);
+}
+
+.site-frame__title {
+    font-size: var(--font-size-title-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-title);
+    color: var(--color-black);
+    margin: 0 0 var(--spacing-md) 0;
+}
+
+.site-frame__paragraph {
+    font-size: var(--font-size-text-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-text);
+    color: var(--color-black);
+    margin: 0;
+}
+
+@media (min-width: 768px) {
+    .site-frame {
+        padding: 0 var(--spacing-container-tablet);
+    }
+
+    .site-frame__text {
+        font-size: var(--font-size-intro-desktop);
+        max-width: min(600px, 100%);
+    }
+
+    .site-frame__title {
+        font-size: var(--font-size-title-desktop);
+    }
+
+    .site-frame__paragraph {
+        font-size: var(--font-size-text-desktop);
+        max-width: min(700px, 100%);
+    }
+}
+
+@media (min-width: 1024px) {
+    .site-frame {
+        padding: 0 var(--spacing-container-desktop);
+    }
+}
+
+/* About page — BEM, только CSS-переменные. Порядок по макету: имя → должность → фото → интро → абзацы → Experience */
+.about {
+    padding: var(--spacing-xxl) var(--spacing-container-mobile);
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    text-align: left;
+}
+
+.about__photo-wrapper {
+    width: 96px;
+    aspect-ratio: 3 / 4;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    margin-bottom: var(--spacing-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+}
+
+.about__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center top;
+    display: block;
+}
+
+.about__intro {
+    font-size: var(--font-size-intro-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-intro);
+    color: var(--color-black);
+    margin: 0 0 var(--spacing-xxl) 0;
+    max-width: 100%;
+    width: 100%;
+}
+
+.about__body {
+    margin-bottom: var(--spacing-xxl);
+}
+
+.about__paragraph {
+    font-size: var(--font-size-text-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-text);
+    color: var(--color-black);
+    margin: 0 0 var(--spacing-md) 0;
+    max-width: 100%;
+    width: 100%;
+}
+
+.about__paragraph:last-child {
+    margin-bottom: 0;
+}
+
+.about__section-title {
+    font-size: var(--font-size-title-mobile);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-title);
+    color: var(--color-black);
+    margin: 0;
+    padding-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    text-align: left;
+}
+
+/* Увеличенный отступ перед заголовком секции после блока Experience или списка Education (по макету ~4–5 строк) */
+.about__experience + .about__section-title,
+.about__education-list + .about__section-title {
+    padding-top: 72px;
+}
+
+.about__experience {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xxl);
+}
+
+.about__experience-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.about__experience-item-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-md);
+    min-width: 0;
+}
+
+.about__experience-icon-wrap {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+}
+
+.about__experience-icon {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+    vertical-align: middle;
+}
+
+.about__experience-role {
+    font-size: var(--font-size-text-mobile);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-text);
+    color: var(--color-black);
+    min-width: 0;
+    overflow-wrap: break-word;
+}
+
+.about__experience-list {
+    margin: 0;
+    padding: 0 0 0 1.25em;
+    list-style-type: disc;
+    font-size: var(--font-size-text-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-text);
+    color: var(--color-black);
+}
+
+.about__experience-list li {
+    margin-bottom: 0.5em;
+    padding-left: 0.25em;
+}
+
+.about__experience-list li:last-child {
+    margin-bottom: 0;
+}
+
+.about__education-list {
+    margin: 0;
+    padding: 0 0 0 1.25em;
+    list-style-type: disc;
+    font-size: var(--font-size-text-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-text);
+    color: var(--color-black);
+}
+
+.about__education-list li {
+    margin-bottom: 0.5em;
+    padding-left: 0.25em;
+}
+
+.about__education-list li:last-child {
+    margin-bottom: 0;
+}
+
+.about__languages-text {
+    font-size: var(--font-size-text-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-text);
+    color: var(--color-black);
+    margin: 0;
+    max-width: 100%;
+}
+
+.about {
+    padding-bottom: 120px;
+}
+
+/* Contact page — BEM, только CSS-переменные. Figma: node-id=2546-5445 */
+.contact {
+    padding: 120px var(--spacing-container-mobile) var(--spacing-xxl);
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    text-align: left;
+}
+
+.contact__heading {
+    font-size: var(--font-size-intro-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-intro);
+    color: var(--color-black);
+    margin: 0 0 8px 0;
+    text-align: left;
+}
+
+.contact__email {
+    font-size: 28px;
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-text);
+    color: var(--color-black);
+    text-decoration: underline;
+    display: inline-block;
+    text-align: left;
+}
+
+.contact__email:hover {
+    text-decoration: none;
+}
+
+/* Футер на странице Contact: логотипы по левому краю внизу, прибиты к низу */
+.footer--contact {
+    justify-content: flex-start;
+    align-items: flex-end;
+    text-align: left;
+}
+
+.footer--contact .footer__social {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--spacing-lg);
+    margin-right: auto;
+}
+
+.footer__social-link {
+    display: inline-block;
+    line-height: 0;
+}
+
+.footer__social-icon {
+    display: block;
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.footer__social-link:hover {
+    opacity: 0.7;
+}
+
+@media (min-width: 768px) {
+    .about {
+        padding: var(--spacing-xxl) var(--spacing-container-tablet);
+        padding-bottom: 120px;
+    }
+
+    .contact {
+        padding: 120px var(--spacing-container-tablet) var(--spacing-xxl);
+    }
+
+    .contact__heading {
+        font-size: var(--font-size-intro-desktop);
+    }
+
+    .contact__email {
+        font-size: 36px;
+    }
+
+    .footer__social-icon {
+        width: 56px;
+        height: 56px;
+    }
+
+    .about__photo-wrapper {
+        width: 120px;
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .about__intro {
+        font-size: var(--font-size-intro-desktop);
+        max-width: min(600px, 100%);
+    }
+
+    .about__paragraph {
+        font-size: var(--font-size-text-desktop);
+        max-width: min(600px, 100%);
+    }
+
+    .about__section-title {
+        font-size: var(--font-size-title-desktop);
+    }
+
+    .about__experience-item {
+        max-width: min(700px, 100%);
+    }
+
+    .about__experience-role {
+        font-size: var(--font-size-text-desktop);
+    }
+
+    .about__experience-list {
+        font-size: var(--font-size-text-desktop);
+        max-width: min(700px, 100%);
+    }
+
+    .about__education-list {
+        font-size: var(--font-size-text-desktop);
+        max-width: min(700px, 100%);
+    }
+
+    .about__languages-text {
+        font-size: var(--font-size-text-desktop);
+        max-width: min(700px, 100%);
+    }
+}
+
+@media (min-width: 1024px) {
+    .about {
+        padding: var(--spacing-xxl) var(--spacing-container-desktop);
+        padding-bottom: 120px;
+    }
+
+    .contact {
+        padding: 120px var(--spacing-container-desktop) var(--spacing-xxl);
+    }
+
+    .about__intro {
+        max-width: min(700px, 100%);
+    }
+
+    .about__paragraph {
+        max-width: min(700px, 100%);
+    }
+}
+
+/* Frame 2546-5382 (Figma node 2546-5382) — BEM, только CSS-переменные */
+.frame-5382 {
+    padding: 0 var(--spacing-container-mobile);
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+.frame-5382__intro {
+    margin-top: var(--spacing-xxl);
+    margin-bottom: var(--spacing-xl);
+}
+
+.frame-5382__text {
+    font-size: var(--font-size-intro-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-intro);
+    color: var(--color-black);
+    margin: 0;
+}
+
+.frame-5382__hero {
+    width: 100%;
+    margin-bottom: var(--spacing-xxl);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.frame-5382__hero-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+
+.frame-5382__section {
+    margin-bottom: var(--spacing-xxl);
+}
+
+.frame-5382__title {
+    font-size: var(--font-size-title-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-title);
+    color: var(--color-black);
+    margin: 0 0 var(--spacing-md) 0;
+}
+
+.frame-5382__paragraph {
+    font-size: var(--font-size-text-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-text);
+    color: var(--color-black);
+    margin: 0;
+}
+
+@media (min-width: 768px) {
+    .frame-5382 {
+        padding: 0 var(--spacing-container-tablet);
+    }
+
+    .frame-5382__text {
+        font-size: var(--font-size-intro-desktop);
+        max-width: min(600px, 100%);
+    }
+
+    .frame-5382__title {
+        font-size: var(--font-size-title-desktop);
+    }
+
+    .frame-5382__paragraph {
+        font-size: var(--font-size-text-desktop);
+        max-width: min(700px, 100%);
+    }
+}
+
+@media (min-width: 1024px) {
+    .frame-5382 {
+        padding: 0 var(--spacing-container-desktop);
+    }
+}
+
+/* Very small screens — те же 56px по макету */
+@media (max-width: 359px) {
+    .header {
+        padding: var(--spacing-md) var(--spacing-container-mobile);
+    }
+
+    .main {
+        padding: 0 var(--spacing-container-mobile);
+    }
+
+    .footer {
+        padding: var(--spacing-xxl) var(--spacing-container-mobile);
+    }
+}
+
+/* Small screens (480px and up) */
+@media (min-width: 480px) {
+    .header {
+        padding: var(--spacing-lg) var(--spacing-container-sm);
+    }
+
+    .main {
+        padding: 0 var(--spacing-container-sm);
+    }
+
+    .footer {
+        padding: var(--spacing-xxl) var(--spacing-container-sm);
+    }
+}
+
+/* Medium screens (600px and up) */
+@media (min-width: 600px) {
+    .header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--spacing-xxl) var(--spacing-container-sm);
+        gap: 0;
+    }
+
+    .header__name {
+        width: auto;
+        flex-shrink: 0;
+    }
+
+    .header__menu {
+        justify-content: flex-end;
+        align-self: auto;
+    }
+
+    .main {
+        padding: 0 var(--spacing-container-sm);
+    }
+
+    .intro__text {
+        max-width: 100%;
+    }
+
+    .footer {
+        padding: 60px var(--spacing-container-sm) var(--spacing-xxl);
+        justify-content: center;
+    }
+
+    .footer--contact {
+        justify-content: flex-start;
+    }
+
+    .footer__menu {
+        justify-content: center;
+    }
+}
+
+/* Tablet Styles (768px and up) */
+@media (min-width: 768px) {
+    .header {
+        padding: var(--spacing-xxl) var(--spacing-container-tablet);
+    }
+
+    .header__title {
+        font-size: var(--font-size-header-title);
+    }
+
+    .header__subtitle {
+        font-size: var(--font-size-header-subtitle);
+    }
+
+    .header__menu {
+        justify-content: flex-end;
+        align-items: center;
+        gap: var(--gap-xl);
+        flex-wrap: nowrap;
+        flex-shrink: 0;
+    }
+
+    .header__link {
+        font-size: var(--font-size-header-link);
+        white-space: nowrap;
+    }
+
+    .main {
+        padding: 0 var(--spacing-container-tablet);
+    }
+
+    .footer {
+        padding: 80px var(--spacing-container-tablet) var(--spacing-xxl);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer--contact {
+        justify-content: flex-start;
+    }
+
+    .footer__menu {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .intro {
+        margin-top: 56px;
+        margin-bottom: 56px;
+        padding: 0;
+    }
+
+    .intro__text {
+        font-size: var(--font-size-intro-desktop);
+        max-width: min(600px, 100%);
+        text-align: left;
+    }
+
+    .projects {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: var(--spacing-md);
+        row-gap: var(--gap-xxl);
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .projects__section-title {
+        grid-column: 1 / -1;
+        font-size: var(--font-size-intro-desktop);
+        /* 72px сверху: row-gap 40px + margin-top 32px; 56px снизу: margin-bottom 16px + row-gap 40px */
+        margin: 32px 0 16px;
+    }
+
+    .projects__item {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .card__image-wrapper {
+        height: var(--card-image-height-mobile);
+    }
+
+    .card__title-text {
+        font-size: var(--font-size-title-desktop);
+    }
+
+    .card__description {
+        font-size: var(--font-size-text-desktop);
+    }
+
+    .card__link-text {
+        font-size: var(--font-size-text-desktop);
+    }
+
+    .footer__menu {
+        gap: var(--gap-xxl);
+    }
+
+    .footer__link {
+        font-size: var(--font-size-footer-desktop);
+    }
+}
+
+/* Large screens (900px and up) */
+@media (min-width: 900px) {
+    .intro__text {
+        max-width: min(700px, 100%);
+    }
+}
+
+/* Desktop (1024px and up) */
+
+@media (min-width: 1024px) {
+    .page {
+        max-width: var(--container-max-width);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .header {
+        padding: var(--spacing-xxl) var(--spacing-container-desktop);
+        justify-content: space-between;
+        align-items: center;
+        gap: 0;
+    }
+
+    .header__name {
+        width: 184px;
+        flex-shrink: 0;
+    }
+
+    .header__menu {
+        margin-left: auto;
+        justify-content: flex-end;
+    }
+
+    .main {
+        padding: 0 var(--spacing-container-desktop);
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .intro {
+        margin-top: 80px;
+        margin-bottom: 0;
+        padding: 48px 0;
+    }
+
+    .intro__text {
+        width: 100%;
+        max-width: min(782px, 100%);
+        text-align: left;
+    }
+
+    .projects {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 32px;
+        row-gap: var(--gap-xxl);
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 80px;
+    }
+
+    .projects__section-title {
+        width: 100%;
+        max-width: min(782px, 100%);
+        margin: 24px 0 16px;
+        text-align: left;
+    }
+
+    .card__image-wrapper {
+        height: var(--card-image-height-desktop);
+    }
+
+    .footer {
+        padding: 80px var(--spacing-container-desktop) var(--spacing-xxl);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer--contact {
+        justify-content: flex-start;
+    }
+
+    .footer__menu {
+        justify-content: center;
+    }
+}
+
+/* Wide screens (1440px and up) - симметричные отступы, контент по макету */
+@media (min-width: 1440px) {
+    .projects {
+        grid-template-columns: repeat(2, minmax(0, var(--card-width-desktop)));
+        width: 100%;
+        max-width: min(calc(2 * var(--card-width-desktop) + 32px), 100%);
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* Project Detail Pages */
+.project-detail {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin-bottom: var(--spacing-xxl);
+}
+
+.project-detail__title {
+    font-size: var(--font-size-title-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-title);
+    color: var(--color-black);
+    margin: 0;
+    margin-top: var(--spacing-xxl);
+    margin-bottom: var(--spacing-lg);
+    text-align: left;
+}
+
+.project-detail__description {
+    font-size: var(--font-size-text-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-text);
+    color: var(--color-black);
+    margin: 0;
+    margin-bottom: var(--spacing-xxl);
+    text-align: left;
+}
+
+.project-detail__image-wrapper {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: var(--spacing-xxl);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    min-width: 0;
+}
+
+.project-detail__image {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+.project-detail__image-wrapper:last-child {
+    margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+    .project-detail__nav {
+        padding-left: var(--spacing-container-tablet);
+    }
+
+    .project-detail__nav--bottom {
+        padding: 0 var(--spacing-container-tablet) 8px;
+    }
+
+    .project-detail__info {
+        padding: 0 var(--spacing-container-tablet);
+    }
+
+    .project-detail__hero-image {
+        padding: 0 var(--spacing-container-tablet) 0;
+    }
+
+    .project-detail__title {
+        font-size: var(--font-size-title-desktop);
+        margin-top: 0;
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .project-detail__description {
+        font-size: var(--font-size-text-desktop);
+        margin-bottom: var(--spacing-xxl);
+    }
+
+    .project-detail__section {
+        padding-left: var(--spacing-container-tablet);
+        padding-right: var(--spacing-container-tablet);
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+
+    .project-detail__hero-image + .project-detail__section {
+        padding-top: 80px;
+    }
+
+    .project-detail__before-after {
+        padding: var(--space-section-vertical) var(--spacing-container-tablet) var(--spacing-container-desktop) var(--spacing-container-tablet);
+        gap: var(--space-before-after-groups);
+    }
+
+    .project-detail__before-after-group {
+        gap: var(--spacing-xl);
+    }
+
+    .project-detail__feature-image {
+        padding: var(--spacing-xxl) 0;
+    }
+
+    .project-detail > .project-detail__feature-image {
+        padding-left: var(--spacing-container-tablet);
+        padding-right: var(--spacing-container-tablet);
+    }
+
+    .project-detail__image-with-bg {
+        padding-left: 64px;
+        padding-right: 64px;
+        padding-top: 64px;
+        padding-bottom: 64px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .project-detail__nav {
+        padding-top: 0;
+        padding-left: var(--spacing-container-detail);
+    }
+
+    .project-detail__nav--bottom {
+        padding: 0 var(--spacing-container-detail) 8px;
+    }
+
+    .project-detail__info {
+        padding: 0 var(--spacing-container-detail);
+    }
+
+    .project-detail__hero-image {
+        padding: 0 var(--spacing-container-detail) 0;
+    }
+
+    .project-detail__title {
+        margin-top: 0;
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .project-detail__section {
+        padding-left: var(--spacing-container-detail);
+        padding-right: var(--spacing-container-detail);
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+
+    .project-detail__hero-image + .project-detail__section {
+        padding-top: 80px;
+    }
+
+    .project-detail__before-after {
+        padding: var(--space-section-vertical) var(--spacing-container-detail) var(--spacing-container-desktop) var(--spacing-container-detail);
+        gap: var(--space-before-after-groups);
+    }
+
+    .project-detail__before-after-group {
+        gap: var(--spacing-xl);
+    }
+
+    .project-detail > .project-detail__feature-image {
+        padding-left: var(--spacing-container-detail);
+        padding-right: var(--spacing-container-detail);
+    }
+
+    .project-detail__image-with-bg {
+        padding-left: 64px;
+        padding-right: 64px;
+        padding-top: 64px;
+        padding-bottom: 64px;
+    }
+}
+
+/* Project Detail Navigation */
+.project-detail__nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--gap-sm);
+    margin-bottom: 0;
+    margin-top: var(--space-header-to-nav-mobile);
+    padding: 0 0 0 var(--spacing-container-mobile);
+}
+
+/* Серая полоса-разделитель перед нижней навигацией (Back / Next) */
+.project-detail__bottom-band {
+    width: 100%;
+    background: #F4F5F9;
+    padding: 0;
+}
+
+.project-detail__nav--bottom {
+    margin-top: -72px;
+    padding: 0 var(--spacing-container-mobile) 8px;
+    justify-content: space-between;
+}
+
+.project-detail__nav-link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--gap-sm);
+    text-decoration: none;
+    color: var(--color-black);
+    font-size: var(--font-size-text-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-text);
+    transition: opacity 0.2s ease;
+}
+
+.project-detail__nav-link:hover {
+    opacity: 0.7;
+}
+
+.project-detail__nav-icon {
+    width: 19px;
+    height: 10px;
+    flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+    .project-detail__nav {
+        margin-top: var(--space-header-to-nav-tablet);
+    }
+
+    .project-detail__nav-link {
+        font-size: var(--font-size-text-desktop);
+    }
+}
+
+@media (min-width: 1024px) {
+    .project-detail__nav {
+        margin-top: var(--space-header-to-nav-desktop);
+    }
+}
+
+/* Project Detail Description Block — только горизонтальный padding, вертикаль задают margin */
+.project-detail__info {
+    margin-bottom: 0;
+    padding: 0 var(--spacing-container-mobile);
+    margin-top: var(--space-nav-to-info);
+}
+
+/* Gectaro: по макету — 32px от nav до описания, 80px от описания до SKILLS */
+.project-detail--gectaro .project-detail__info {
+    margin-top: 32px;
+}
+
+.project-detail--gectaro .project-detail__info-description {
+    margin-bottom: 40px;
+}
+
+/* Как на главной: стиль intro (24px/32px, regular, line-height 1.21em) */
+.project-detail__info-description {
+    font-size: var(--font-size-intro-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-intro);
+    color: var(--color-black);
+    margin: 0;
+    margin-bottom: var(--space-description-to-meta);
+    text-align: left;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+@media (min-width: 768px) {
+    .project-detail__info-description {
+        font-size: var(--font-size-intro-desktop);
+        max-width: min(600px, 100%);
+    }
+}
+
+@media (min-width: 1024px) {
+    .project-detail__info-description {
+        max-width: min(700px, 100%);
+    }
+}
+
+.project-detail__info-meta {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+}
+
+.project-detail__info-skills {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: var(--gap-md);
+    flex-wrap: wrap;
+}
+
+.project-detail__info-skills-label {
+    font-size: 15px;
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-text);
+    color: var(--color-black);
+    text-transform: uppercase;
+}
+
+.project-detail__info-skills-value {
+    font-size: 15px;
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-text);
+    color: var(--color-black);
+    text-transform: uppercase;
+}
+
+.project-detail__info-year {
+    font-size: 15px;
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-text);
+    color: var(--color-black);
+    margin-left: auto;
+}
+
+
+.project-detail__info-meta {
+    margin-bottom: var(--space-meta-to-hero-mobile);
+}
+
+@media (min-width: 768px) {
+    .project-detail__info-meta {
+        margin-bottom: var(--space-meta-to-hero-tablet);
+    }
+}
+
+@media (min-width: 1024px) {
+    .project-detail__info-meta {
+        margin-bottom: var(--space-meta-to-hero-desktop);
+    }
+}
+
+/* Project Detail Sections */
+/* Секции project-detail: база 80px top/bottom. Модификаторы — разные блоки со своими стилями: --task, --process, --intro, --layouts */
+.project-detail__section {
+    margin-bottom: 0;
+    padding: 80px var(--spacing-container-mobile) 80px var(--spacing-container-mobile);
+}
+
+/* 80px между картинкой и первой секцией (Problems) — соседний селектор */
+.project-detail__hero-image + .project-detail__section {
+    padding-top: 80px;
+}
+
+/* Отступ от блока Before/After до заголовка следующей секции (New features) */
+.project-detail__before-after + .project-detail__section {
+    padding-top: 80px;
+}
+
+/* Отступ от секции с картинкой (Security & Privacy Center) до заголовка Personalization — по макету */
+.project-detail__section:has(.project-detail__feature-image) + .project-detail__section {
+    padding-top: 72px;
+}
+
+/* Отступ от абзаца до блока Before/After в секции Personalization — по макету */
+.project-detail__section-text + .project-detail__before-after-group {
+    margin-top: 40px;
+}
+
+/* Отступ от картинки mobile.png до секции My impact */
+.project-detail__feature-image + .project-detail__section {
+    padding-top: 40px;
+}
+
+.project-detail__section-title {
+    font-size: var(--font-size-title-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-title);
+    color: var(--color-black);
+    margin: 0 0 24px 0;
+    padding: 0;
+    text-align: left;
+}
+
+.project-detail__section-text {
+    font-size: var(--font-size-text-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-text);
+    color: var(--color-black);
+    margin: 0;
+    padding: 0;
+    white-space: pre-line;
+    text-align: left;
+}
+
+.project-detail__section-text + .project-detail__section-text {
+    margin-top: 1em;
+}
+
+.project-detail__section-list {
+    font-size: var(--font-size-text-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-text);
+    color: var(--color-black);
+    margin: 0;
+    padding: 0 0 0 1.25em;
+    list-style-type: disc;
+    text-align: left;
+}
+
+.project-detail__section-text + .project-detail__section-list {
+    margin-top: 0.5em;
+}
+
+.project-detail__section-list li {
+    margin-bottom: 0.5em;
+    padding-left: 0.25em;
+}
+
+.project-detail__section-list li:last-child {
+    margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+    .project-detail__section-title {
+        font-size: var(--font-size-title-desktop);
+    }
+
+    .project-detail__section-text {
+        font-size: var(--font-size-text-desktop);
+    }
+
+    .project-detail__section-list {
+        font-size: var(--font-size-text-desktop);
+    }
+}
+
+@media (min-width: 1024px) {
+    .project-detail__section-text,
+    .project-detail__section-list {
+        max-width: min(700px, 100%);
+    }
+}
+
+/* Project Detail Images */
+.project-detail__hero-image {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 0;
+    padding: 0 var(--spacing-container-mobile) 0;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    min-width: 0;
+}
+
+.project-detail__hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+
+.project-detail__feature-image {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 40px;
+    padding: var(--spacing-xxl) 0;
+    border-radius: var(--border-radius);
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 0px между заголовком секции и следующим объектом (ещё −16px) */
+.project-detail__section-title + .project-detail__feature-image {
+    margin-top: 0;
+}
+/* У заголовка перед картинкой/блоком убираем нижний отступ, чтобы зазор был 0 */
+.project-detail__section-title:has(+ .project-detail__feature-image) {
+    margin-bottom: 0;
+}
+
+/* Боковые отступы 56px у картинки mobile.png (прямой потомок project-detail) */
+.project-detail > .project-detail__feature-image {
+    padding-left: var(--spacing-container-mobile);
+    padding-right: var(--spacing-container-mobile);
+}
+
+.project-detail__feature-image img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    border-radius: var(--border-radius);
+}
+
+.project-detail__feature-image + .project-detail__section-text {
+    margin-top: var(--spacing-xl);
+}
+
+/* Miracle Genuine: картинки с фоном сверху и снизу (GM_1.mp4, GM_2.gif) */
+.project-detail__image-with-bg {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 64px;
+    margin-bottom: 0;
+    padding: 64px;
+    background: #F4F5F9;
+    border-radius: var(--border-radius);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 0;
+}
+
+.project-detail__image-with-bg img,
+.project-detail__image-with-bg video {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    border-radius: var(--border-radius);
+}
+
+/* Секция с одной картинкой (GM-2): отступ задаёт секция */
+.project-detail__section .project-detail__image-wrapper {
+    margin-bottom: 0;
+}
+
+/* Секция с одной картинкой с фоном (gif): отступ задаёт секция */
+.project-detail__section .project-detail__image-with-bg {
+    margin-top: 0;
+}
+
+/* Mobile version: два макета в ряд (GM-3.gif, GM-4.gif) — по макету gap 32px */
+.project-detail__mobile-row {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 64px;
+}
+
+.project-detail__section-title + .project-detail__mobile-row {
+    margin-top: 24px;
+}
+
+.project-detail__mobile-row .project-detail__image-with-bg {
+    flex: 1;
+    min-width: 0;
+}
+
+@media (min-width: 768px) {
+    .project-detail__mobile-row {
+        flex-direction: row;
+        gap: 32px;
+        padding: 40px 0;
+        justify-content: center;
+        align-items: stretch;
+    }
+
+    .project-detail__mobile-row .project-detail__image-with-bg {
+        flex: 1 1 0;
+        min-width: 0;
+        max-width: 624px;
+        aspect-ratio: 624 / 791;
+        box-sizing: border-box;
+    }
+
+    .project-detail__mobile-row .project-detail__image-with-bg img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+
+@media (min-width: 1024px) {
+    .project-detail__mobile-row .project-detail__image-with-bg {
+        padding: 110px 178px;
+    }
+}
+
+
+/* Outcome: фон, заголовок и текст перед картинкой 404 */
+.project-detail__section--outcome {
+    margin-top: 16px;
+    padding: 0;
+}
+
+.project-detail__outcome-band {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    background: #F4F5F9;
+    padding: 80px var(--spacing-container-mobile) 64px;
+}
+
+.project-detail__outcome-heading {
+    font-size: var(--font-size-title-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-title);
+    color: var(--color-black);
+    margin: 0 0 24px 0;
+    padding: 0;
+}
+
+.project-detail__outcome-meta {
+    margin: 0 0 40px 0;
+}
+
+.project-detail__outcome-row {
+    font-size: var(--font-size-text-mobile);
+    line-height: var(--line-height-text);
+    color: var(--color-black);
+    margin: 0 0 0.5em 0;
+    padding: 0;
+}
+
+.project-detail__outcome-row:last-child {
+    margin-bottom: 0;
+}
+
+.project-detail__outcome-label {
+    color: #6B7280;
+    font-weight: var(--font-weight-regular);
+}
+
+.project-detail__outcome-value {
+    color: var(--color-black);
+}
+
+/* От картинки до края заливки суммарно 120px (60px сверху + 60px снизу) */
+.project-detail__outcome-band .project-detail__image-wrapper {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+@media (min-width: 768px) {
+    .project-detail__outcome-band {
+        padding: 80px var(--spacing-container-tablet) 64px;
+    }
+
+    .project-detail__outcome-heading {
+        font-size: var(--font-size-title-desktop);
+    }
+
+    .project-detail__outcome-meta {
+        margin-bottom: 48px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .project-detail__outcome-band {
+        padding: 80px var(--spacing-container-detail) 64px;
+    }
+}
+
+/* Miracle Genuine: High fidelity layouts — серая заливка в края, текст и заголовок на заливке */
+/* От макетов (карточек) до края заливки 120px */
+.project-detail__layouts-band {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    background: #F4F5F9;
+    padding: 112px var(--spacing-container-mobile) 120px;
+}
+
+/* High fidelity layouts: по макету — один левый край, умеренные вертикальные отступы */
+.project-detail__section--layouts {
+    margin-top: 0;
+    padding: 0 var(--spacing-container-mobile) 56px;
+}
+
+.project-detail__section--layouts .project-detail__section-text {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    max-width: 100%;
+}
+
+/* Заголовок секции — отступ до карточек 60px */
+.project-detail__layouts-heading {
+    font-size: var(--font-size-title-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-title);
+    color: var(--color-black);
+    margin: 0 0 60px 0;
+    padding: 0;
+}
+
+.project-detail__layouts-intro {
+    font-size: var(--font-size-text-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-text);
+    color: var(--color-black);
+    margin: 0 0 40px 0;
+    max-width: min(700px, 100%);
+}
+
+.project-detail__layouts-intro + .project-detail__layouts-wrap {
+    margin-top: 0;
+}
+
+.project-detail__layouts-wrap {
+    border-radius: var(--border-radius);
+}
+
+.project-detail__layouts {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+}
+
+.project-detail__layouts-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: #FFFFFF;
+    border-radius: var(--border-radius);
+    padding: 48px 32px 32px;
+}
+
+.project-detail__layouts-image {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    border-radius: var(--border-radius);
+}
+
+@media (min-width: 768px) {
+    .project-detail__layouts-band {
+        padding: 112px var(--spacing-container-tablet) 120px;
+    }
+
+    .project-detail__layouts-heading {
+        font-size: var(--font-size-title-desktop);
+    }
+
+    .project-detail__layouts-intro {
+        font-size: var(--font-size-text-desktop);
+    }
+
+    .project-detail__layouts {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 48px;
+    }
+
+    .project-detail__layouts-item {
+        padding: 56px 40px 40px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .project-detail__layouts-band {
+        padding: 96px var(--spacing-container-detail) 120px;
+    }
+
+    .project-detail__layouts-intro {
+        margin-bottom: 48px;
+    }
+
+    .project-detail__layouts-item {
+        padding: 64px 48px 48px;
+    }
+}
+
+/* ========== Miracle Genuine: отступы и размеры по макету ========== */
+.project-detail--mg .project-detail__hero-image:first-of-type {
+    margin-bottom: 0;
+}
+
+/* Gectaro: между блоками Problems и Objective — расстояние в два раза меньше (40px сверху и снизу) */
+.project-detail--gectaro .project-detail__hero-image + .project-detail__section {
+    padding-bottom: 40px;
+}
+.project-detail--gectaro .project-detail__hero-image + .project-detail__section + .project-detail__section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+/* Gectaro: между блоками Objective и Success metrics — расстояние в два раза меньше */
+.project-detail--gectaro .project-detail__hero-image + .project-detail__section + .project-detail__section + .project-detail__section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+/* Gectaro: между блоками Success metrics и Tasks — расстояние в два раза меньше */
+.project-detail--gectaro .project-detail__hero-image + .project-detail__section + .project-detail__section + .project-detail__section + .project-detail__section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+/* Gectaro: между секцией Tasks и блоком Role-based module access model — расстояние в два раза меньше */
+.project-detail--gectaro .project-detail__hero-image + .project-detail__section + .project-detail__section + .project-detail__section + .project-detail__section + .project-detail__section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+/* Gectaro: между блоком Role-based module access model и блоком Scenario mapping for complex workflows — расстояние в два раза меньше */
+.project-detail--gectaro .project-detail__hero-image + .project-detail__section + .project-detail__section + .project-detail__section + .project-detail__section + .project-detail__section + .project-detail__section {
+    padding-top: 40px;
+    padding-bottom: 16px;
+}
+/* Gectaro: после блока с flow (Scenario mapping) до before/after — расстояние уменьшено на 24px */
+.project-detail--gectaro .project-detail__section:has(+ .project-detail__before-after) {
+    padding-bottom: 16px;
+}
+/* Gectaro: между блоками Design library и Mobile app — минимальный зазор */
+.project-detail--gectaro .project-detail__section--design-library {
+    padding-bottom: 0;
+}
+.project-detail--gectaro .project-detail__section--design-library .project-detail__feature-image {
+    margin-top: 0;
+    padding-bottom: 0;
+}
+.project-detail--gectaro .project-detail__section--mobile-app .project-detail__feature-image {
+    margin-top: 0;
+}
+.project-detail--gectaro .project-detail__section--mobile-app {
+    padding-top: 0;
+    padding-bottom: 40px;
+}
+/* Gectaro: от картинки (Mobile app) до заголовка My impact — ещё −16px */
+.project-detail--gectaro .project-detail__section--mobile-app + .project-detail__section {
+    padding-top: 0;
+    margin-top: -16px;
+}
+
+/* ========== Norton: компактные отступы по макету ========== */
+/* 24px между заголовком и текстом */
+.project-detail--norton .project-detail__section-title {
+    margin-bottom: 24px;
+}
+.project-detail--norton .project-detail__section-title:has(+ .project-detail__feature-image) {
+    margin-bottom: 0;
+}
+/* Между секциями Problems, Objective, Tasks — одинаковый зазор 48px (24+24) по макету */
+.project-detail--norton .project-detail__hero-image + .project-detail__section {
+    padding-bottom: 24px;
+}
+.project-detail--norton .project-detail__hero-image + .project-detail__section + .project-detail__section {
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+.project-detail--norton .project-detail__hero-image + .project-detail__section + .project-detail__section + .project-detail__section {
+    padding-top: 24px;
+    padding-bottom: 56px;
+}
+/* 24px между вводным предложением и списком; 12px между пунктами списка */
+.project-detail--norton .project-detail__section-text + .project-detail__section-list {
+    margin-top: 24px;
+}
+.project-detail--norton .project-detail__section-list li {
+    margin-bottom: 12px;
+}
+.project-detail--norton .project-detail__section-list li:last-child {
+    margin-bottom: 0;
+}
+/* Norton: расстояние от абзаца до картинки (feature-image) — на 32px меньше */
+.project-detail--norton .project-detail__section-text + .project-detail__feature-image {
+    margin-top: 8px;
+}
+/* Norton: до заголовка после before/after (Security & Privacy Center) — +24px */
+.project-detail--norton .project-detail__before-after + .project-detail__section {
+    padding-top: 104px;
+}
+/* Norton: до заголовка Personalization (после секции с картинкой) — ещё −48px всего */
+.project-detail--norton .project-detail__section:has(.project-detail__feature-image) + .project-detail__section {
+    padding-top: 0;
+    margin-top: -16px;
+}
+/* Norton: вертикальное расстояние между Personalization и блоком mobile.png — ещё −24px */
+.project-detail--norton .project-detail__section:has(+ .project-detail__feature-image) {
+    padding-bottom: 28px;
+}
+.project-detail--norton .project-detail__section + .project-detail__feature-image {
+    margin-top: 8px;
+}
+/* Norton: от текста до кнопок навигации — ровно 96px */
+.project-detail--norton .project-detail__nav--bottom {
+    margin-top: 96px;
+}
+/* Norton: скрыть плашки Before/After только на этой странице */
+.project-detail--norton .project-detail__before-after-label {
+    display: none;
+}
+
+/* Между секциями — один отступ 80px (нижний padding предыдущей), без двойного верха */
+.project-detail--mg .project-detail__section + .project-detail__section {
+    padding-top: 0;
+}
+
+/* Между блоками Task и Process — 64px (ещё на 8px меньше) */
+.project-detail--mg .project-detail__section:nth-child(4) {
+    padding-bottom: 64px;
+}
+
+/* После абзаца Process до схемы процесса (GM-2) — по макету ~80px */
+.project-detail--mg .project-detail__section:nth-child(5) {
+    padding-bottom: 80px;
+}
+
+/* Секция Mobile version — 16px сверху над заголовком */
+.project-detail--mg .project-detail__section--mobile .project-detail__section-title {
+    margin-top: 16px;
+}
+
+/* Меньше отступа снизу секции Mobile version — сократить расстояние сверху до заголовка UI-kit and states на 16px */
+.project-detail--mg .project-detail__section--mobile {
+    padding-bottom: 64px;
+}
+
+.mg__section {
+    padding: 80px var(--spacing-container-mobile);
+    margin: 0;
+}
+
+.mg__section--task {
+    padding-top: 80px;
+}
+
+.mg__section--process .mg__title + .mg__text {
+    margin-bottom: 0;
+}
+
+.mg__title {
+    font-size: var(--font-size-title-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-title);
+    color: var(--color-black);
+    margin: 0 0 24px 0;
+}
+
+.mg__text {
+    font-size: var(--font-size-text-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-text);
+    color: var(--color-black);
+    margin: 0;
+}
+
+.mg__text + .mg__text {
+    margin-top: 1em;
+}
+
+.mg__figure {
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.mg__figure img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    border-radius: var(--border-radius);
+}
+
+.mg__figure + .mg__text {
+    margin-top: 32px;
+}
+
+.mg__image-bg {
+    width: 100%;
+    margin-top: 64px;
+    margin-bottom: 0;
+    padding: 64px var(--spacing-container-mobile);
+    background: #F4F5F9;
+    border-radius: var(--border-radius);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mg__image-bg img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    border-radius: var(--border-radius);
+}
+
+.mg__section--intro {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.mg__section--layouts {
+    padding: 0;
+    margin: 0;
+}
+
+.mg__layouts-band {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    padding: 80px var(--spacing-container-mobile) 64px;
+    background: #F4F5F9;
+}
+
+.mg__layouts-title {
+    margin: 0 0 40px 0;
+}
+
+.mg__layouts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+}
+
+.mg__layouts-card {
+    background: #FFFFFF;
+    border-radius: var(--border-radius);
+    padding: 48px 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.mg__layouts-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    border-radius: var(--border-radius);
+}
+
+@media (min-width: 768px) {
+    .mg__section {
+        padding-left: var(--spacing-container-tablet);
+        padding-right: var(--spacing-container-tablet);
+    }
+
+    .mg__image-bg {
+        padding: 64px var(--spacing-container-tablet);
+    }
+
+    .mg__layouts-band {
+        padding: 80px var(--spacing-container-tablet) 64px;
+    }
+
+    .mg__layouts-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 48px;
+    }
+
+    .mg__layouts-card {
+        padding: 56px 40px;
+    }
+
+    .mg__title {
+        font-size: var(--font-size-title-desktop);
+    }
+
+    .mg__text {
+        font-size: var(--font-size-text-desktop);
+    }
+}
+
+@media (min-width: 1024px) {
+    .mg__section {
+        padding-left: var(--spacing-container-detail);
+        padding-right: var(--spacing-container-detail);
+    }
+
+    .mg__image-bg {
+        padding: 64px var(--spacing-container-detail);
+    }
+
+    .mg__layouts-band {
+        padding: 80px var(--spacing-container-detail) 64px;
+    }
+
+    .mg__layouts-title + .mg__layouts-grid {
+        margin-top: 40px;
+    }
+
+    .mg__layouts-card {
+        padding: 64px 48px;
+    }
+}
+
+.project-detail__gallery {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xxl);
+    margin-bottom: var(--spacing-xxl);
+}
+
+.project-detail__gallery-item {
+    width: 100%;
+    max-width: 100%;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    min-width: 0;
+}
+
+.project-detail__gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Project Detail Highlight (Mobile browser — тёмный блок) */
+.project-detail__highlight {
+    margin-top: 80px;
+    padding: var(--spacing-xxl) var(--spacing-container-mobile);
+    background: linear-gradient(135deg, #0d1b2a 0%, #1a2744 50%, #2d1f3d 80%, #4a2c2a 100%);
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+.project-detail__highlight-content {
+    max-width: 100%;
+}
+
+.project-detail__highlight-title {
+    font-size: var(--font-size-title-mobile);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-title);
+    color: var(--color-white);
+    margin: 0 0 var(--spacing-md) 0;
+    padding: 0;
+}
+
+.project-detail__highlight-text {
+    font-size: var(--font-size-text-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-text);
+    color: var(--color-white);
+    margin: 0;
+    padding: 0;
+    opacity: 0.95;
+}
+
+.project-detail__highlight-image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.project-detail__highlight-image img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+@media (min-width: 768px) {
+    .project-detail__highlight {
+        padding: var(--spacing-xxl) var(--spacing-container-tablet);
+        flex-direction: row;
+        align-items: center;
+        gap: var(--gap-xxl);
+    }
+
+    .project-detail__highlight-content {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .project-detail__highlight-title {
+        font-size: var(--font-size-title-desktop);
+    }
+
+    .project-detail__highlight-text {
+        font-size: var(--font-size-text-desktop);
+    }
+
+    .project-detail__highlight-image {
+        flex: 0 1 auto;
+        max-width: 50%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .project-detail__highlight {
+        margin-top: 120px;
+        padding: var(--spacing-xxl) var(--spacing-container-detail);
+        gap: 48px;
+    }
+}
+
+/* Project Detail Before-After */
+.project-detail__before-after {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-before-after-groups);
+    margin-bottom: 0;
+    padding: var(--space-section-vertical) var(--spacing-container-mobile) var(--spacing-container-desktop) var(--spacing-container-mobile);
+}
+
+.project-detail__before-after-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+    width: 100%;
+}
+
+.project-detail__before-after-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-before-after-item);
+    width: 100%;
+}
+
+.project-detail__before-after-group--single .project-detail__before-after-item--full {
+    max-width: 100%;
+}
+
+@media (min-width: 768px) {
+    .project-detail__before-after-group--single {
+        flex-direction: column;
+    }
+
+    .project-detail__before-after-group--single .project-detail__before-after-item--full {
+        flex: none;
+    }
+}
+
+.project-detail__before-after-image-wrapper {
+    position: relative;
+    width: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+    background: #F4F5F9;
+    min-width: 0;
+}
+
+.project-detail__before-after-label {
+    position: absolute;
+    top: var(--spacing-lg);
+    left: var(--spacing-lg);
+    font-size: 13px;
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: var(--font-family);
+}
+
+.project-detail__before-after-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 24px;
+}
+
+.project-detail__before-after-list {
+    font-size: var(--font-size-text-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-text);
+    color: var(--color-black);
+    margin: 0;
+    padding: 0 0 0 1.25em;
+    list-style-type: disc;
+    text-align: left;
+}
+
+.project-detail__before-after-list li {
+    margin-bottom: 0.5em;
+    padding-left: 0.25em;
+}
+
+.project-detail__before-after-list li:last-child {
+    margin-bottom: 0;
+}
+
+.project-detail__before-after-text {
+    font-size: var(--font-size-text-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-text);
+    color: var(--color-black);
+    margin: 0;
+    white-space: pre-line;
+    text-align: left;
+}
+
+@media (min-width: 768px) {
+    .project-detail__before-after-group {
+        flex-direction: row;
+        gap: var(--spacing-xl);
+    }
+
+    .project-detail__before-after-item {
+        flex: 1;
+        gap: var(--space-before-after-item);
+    }
+
+    .project-detail__before-after-list,
+    .project-detail__before-after-text {
+        font-size: var(--font-size-text-desktop);
+    }
+}
+
+@media (min-width: 1024px) {
+    .project-detail__before-after-list,
+    .project-detail__before-after-text {
+        max-width: min(700px, 100%);
+    }
+}
