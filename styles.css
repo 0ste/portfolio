@@ -345,6 +345,14 @@ body {
     text-align: left;
 }
 
+.card__title-separator {
+    font-size: var(--font-size-title-mobile);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-title);
+    color: var(--color-black);
+    user-select: none;
+}
+
 .card__description {
     font-size: var(--font-size-text-mobile);
     font-weight: var(--font-weight-regular);
@@ -1067,7 +1075,8 @@ body {
         height: var(--card-image-height-mobile);
     }
 
-    .card__title-text {
+    .card__title-text,
+    .card__title-separator {
         font-size: var(--font-size-title-desktop);
     }
 
